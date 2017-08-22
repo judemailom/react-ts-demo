@@ -1,6 +1,12 @@
-export class Authors{
+export class OAuthor {
+    id: string;
+    firstName: string;
+    lastName: string;
+}
+
+export class MockApi{
     constructor(){
-        this.authorsMock = 
+        this.authors = 
             [
                 {
                     id: 'cory-house', 
@@ -19,5 +25,5 @@ export class Authors{
                 }
             ]
     };
-    authorsMock: any;
+    authors : OAuthor[]
 }

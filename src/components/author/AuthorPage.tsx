@@ -1,22 +1,22 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {AuthorApi} from "../../api/AuthorApi"
+import {AuthorList} from "./AuthorList";
+import {AuthorApi, OAuthor} from "../../api/AuthorApi"
 
-export class Author extends React.Component<any,any>{
-    constructor(authors: Author){
+export class AuthorPage extends React.Component<any,any>{
+    constructor(authors: any){
         super(authors);
         this.state = {
             authors: []
         };
     }
 
-    componentWillMount(){
+    componentDidMount(){
         var x:AuthorApi = new AuthorApi();
         this.setState({authors: x.getAllAuthors()});
     }
 
     render(){
-        
         function createAuthorRow(authors:any){
             return (
                 <tr key={authors.id}> 
@@ -29,17 +29,7 @@ export class Author extends React.Component<any,any>{
         return (
             <div>
                 <h1>Authors</h1>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.authors.map(createAuthorRow,this)}
-                    </tbody>
-                </table>
+                <AuthorList authors={this.state.authors}/>
             </div>
         );
     }

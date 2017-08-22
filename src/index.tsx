@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import {Home} from "./components/Homepage";
 import {About} from "./components/about/AboutPage";
-import {Author} from "./components/author/AuthorPage";
+import {AuthorPage} from "./components/author/AuthorPage";
 import {Header} from "./components/common/Header";
 
 class App extends React.Component<any,any>{
@@ -12,7 +12,7 @@ class App extends React.Component<any,any>{
             return <div> <Header/> <About/> </div>;
         }
         else if(this.props.route == "author"){
-            return <div> <Header/> <Author/> </div>;
+            return <div> <Header/> <AuthorPage/> </div>;
         }
         return <div> <Header/> <Home/> </div>;
     }

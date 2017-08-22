@@ -1,20 +1,19 @@
 //This file is mocking a web API by hitting hard coded data.
-import {Authors} from "./authorData";
+import {MockApi, OAuthor} from "./MockApi";
 import * as _ from "lodash";
 
 export class AuthorApi{
     getAllAuthors(){
-		var author: Authors = new Authors();
-		return JSON.parse(JSON.stringify(author.authorsMock));//_clone(authors); 
+		var mock: MockApi = new MockApi();
+		return JSON.parse(JSON.stringify(mock.authors));//_clone(authors); 
 	}
 
 	getAuthorById(id:string){
-        //var x = Authors;
-		var author: Authors = new Authors();
-		return JSON.parse(JSON.stringify(author.authorsMock[0]));//_clone(author);
+		var mock: MockApi = new MockApi();
+		return JSON.parse(JSON.stringify(mock.authors[0]));//_clone(author);
 	}
 	
-	saveAuthor(author: Authors){
+	saveAuthor(author: OAuthor){
 		//pretend an ajax call to web api is made here
 		console.log('Pretend this just saved the author to the DB via AJAX call...');
 		
@@ -38,3 +37,5 @@ export class AuthorApi{
 	}
 
 }
+
+export {OAuthor}

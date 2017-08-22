@@ -91,7 +91,7 @@ var ReactDOM = __webpack_require__(2);
 var Homepage_1 = __webpack_require__(3);
 var AboutPage_1 = __webpack_require__(4);
 var AuthorPage_1 = __webpack_require__(5);
-var Header_1 = __webpack_require__(8);
+var Header_1 = __webpack_require__(9);
 var App = (function (_super) {
     __extends(App, _super);
     function App() {
@@ -228,7 +228,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var AuthorApi_1 = __webpack_require__(6);
+var AuthorList_1 = __webpack_require__(6);
+var AuthorApi_1 = __webpack_require__(7);
 var Author = (function (_super) {
     __extends(Author, _super);
     function Author(authors) {
@@ -238,7 +239,7 @@ var Author = (function (_super) {
         };
         return _this;
     }
-    Author.prototype.componentWillMount = function () {
+    Author.prototype.componentDidMount = function () {
         var x = new AuthorApi_1.AuthorApi();
         this.setState({ authors: x.getAllAuthors() });
     };
@@ -254,12 +255,7 @@ var Author = (function (_super) {
         }
         return (React.createElement("div", null,
             React.createElement("h1", null, "Authors"),
-            React.createElement("table", { className: "table" },
-                React.createElement("thead", null,
-                    React.createElement("tr", null,
-                        React.createElement("th", null, "ID"),
-                        React.createElement("th", null, "Name"))),
-                React.createElement("tbody", null, this.state.authors.map(createAuthorRow, this)))));
+            React.createElement(AuthorList_1.AuthorList, { authors: this.state.authors })));
     };
     return Author;
 }(React.Component));
@@ -272,20 +268,67 @@ exports.Author = Author;
 
 "use strict";
 
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var AuthorList = (function (_super) {
+    __extends(AuthorList, _super);
+    function AuthorList() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AuthorList.prototype.render = function () {
+        function createAuthorRow(authors) {
+            return (React.createElement("tr", { key: authors.id },
+                React.createElement("td", null,
+                    React.createElement("a", { href: "#" }, authors.id)),
+                React.createElement("td", null,
+                    authors.firstName,
+                    " ",
+                    authors.lastName)));
+        }
+        return (React.createElement("div", null,
+            React.createElement("table", { className: "table" },
+                React.createElement("thead", null,
+                    React.createElement("tr", null,
+                        React.createElement("th", null, "ID"),
+                        React.createElement("th", null, "Name"))),
+                React.createElement("tbody", null, this.props.authors.map(createAuthorRow, this)))));
+    };
+    return AuthorList;
+}(React.Component));
+exports.AuthorList = AuthorList;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 //This file is mocking a web API by hitting hard coded data.
-var authorData_1 = __webpack_require__(7);
+var MockApi_1 = __webpack_require__(8);
+exports.OAuthor = MockApi_1.OAuthor;
 var AuthorApi = (function () {
     function AuthorApi() {
     }
     AuthorApi.prototype.getAllAuthors = function () {
-        var author = new authorData_1.Authors();
-        return JSON.parse(JSON.stringify(author.authorsMock)); //_clone(authors); 
+        var mock = new MockApi_1.MockApi();
+        return JSON.parse(JSON.stringify(mock.authors)); //_clone(authors); 
     };
     AuthorApi.prototype.getAuthorById = function (id) {
         //var x = Authors;
-        var author = new authorData_1.Authors();
-        return JSON.parse(JSON.stringify(author.authorsMock[0])); //_clone(author);
+        var mock = new MockApi_1.MockApi();
+        return JSON.parse(JSON.stringify(mock.authors[0])); //_clone(author);
     };
     AuthorApi.prototype.saveAuthor = function (author) {
         //pretend an ajax call to web api is made here
@@ -312,15 +355,21 @@ exports.AuthorApi = AuthorApi;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Authors = (function () {
-    function Authors() {
-        this.authorsMock =
+var OAuthor = (function () {
+    function OAuthor() {
+    }
+    return OAuthor;
+}());
+exports.OAuthor = OAuthor;
+var MockApi = (function () {
+    function MockApi() {
+        this.authors =
             [
                 {
                     id: 'cory-house',
@@ -340,13 +389,13 @@ var Authors = (function () {
             ];
     }
     ;
-    return Authors;
+    return MockApi;
 }());
-exports.Authors = Authors;
+exports.MockApi = MockApi;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
