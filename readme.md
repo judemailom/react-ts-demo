@@ -1,0 +1,11 @@
+- state
+- rendering
+- promise
+- App.tsx container is master?
+- why some components have their own index.ts?
+- main.tsx is index
+- index.ts purpose?
+- what are routes and reducers?
+- react is controller view
+- React Life Cycle exists! could occcur on server/client side(?)
+- props - immutable ; state - mutable
