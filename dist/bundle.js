@@ -111,7 +111,7 @@ var App = (function (_super) {
                 " ",
                 React.createElement(Header_1.Header, null),
                 " ",
-                React.createElement(AuthorPage_1.Author, null),
+                React.createElement(AuthorPage_1.AuthorPage, null),
                 " ");
         }
         return React.createElement("div", null,
@@ -230,20 +230,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var AuthorList_1 = __webpack_require__(6);
 var AuthorApi_1 = __webpack_require__(7);
-var Author = (function (_super) {
-    __extends(Author, _super);
-    function Author(authors) {
+var AuthorPage = (function (_super) {
+    __extends(AuthorPage, _super);
+    function AuthorPage(authors) {
         var _this = _super.call(this, authors) || this;
         _this.state = {
             authors: []
         };
         return _this;
     }
-    Author.prototype.componentDidMount = function () {
+    AuthorPage.prototype.componentDidMount = function () {
         var x = new AuthorApi_1.AuthorApi();
         this.setState({ authors: x.getAllAuthors() });
     };
-    Author.prototype.render = function () {
+    AuthorPage.prototype.render = function () {
         function createAuthorRow(authors) {
             return (React.createElement("tr", { key: authors.id },
                 React.createElement("td", null,
@@ -257,9 +257,9 @@ var Author = (function (_super) {
             React.createElement("h1", null, "Authors"),
             React.createElement(AuthorList_1.AuthorList, { authors: this.state.authors })));
     };
-    return Author;
+    return AuthorPage;
 }(React.Component));
-exports.Author = Author;
+exports.AuthorPage = AuthorPage;
 
 
 /***/ }),
@@ -326,7 +326,6 @@ var AuthorApi = (function () {
         return JSON.parse(JSON.stringify(mock.authors)); //_clone(authors); 
     };
     AuthorApi.prototype.getAuthorById = function (id) {
-        //var x = Authors;
         var mock = new MockApi_1.MockApi();
         return JSON.parse(JSON.stringify(mock.authors[0])); //_clone(author);
     };
