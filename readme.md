@@ -1,6 +1,9 @@
 Scope:
 - Basic typescript react (syntax, structure, etc)
-- Basic routing (no frameworks)
+- Basic routing
+    - react-router
+    - https://github.com/ReactTraining/react-router
+    - basic routing with Router components
 - PropTypes
     - set expectation of necessary properties to pass (sort of call signature for components)
     - prop validation not ran on production environment
@@ -14,7 +17,7 @@ Scope:
 
 Compiling:
 - run webpack-dev-server --progress on command line
-- open http://localhost:8080/index.html
+- open http://localhost:8089
 
 Questions/Notes:
 - state
