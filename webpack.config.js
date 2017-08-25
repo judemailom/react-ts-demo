@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: "./src/components/index.tsx",
     output: {
         filename: "bundle.js",
         path: __dirname + "/dist"
@@ -30,5 +30,14 @@ module.exports = {
     externals: {
         "react": "React",
         "react-dom": "ReactDOM"
+    },
+    devServer: {
+        hot: true,
+        inline: true,
+        port: 8089,
+        stats: {
+            colors: true
+        },
+        historyApiFallback: true
     },
 };

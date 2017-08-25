@@ -25,7 +25,6 @@ export class AuthorPage extends React.Component<any,any>{
                 </tr>
             );
         }
-        
         return (
             <div>
                 <h1>Authors</h1>

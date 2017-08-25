@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-export class About extends React.Component<undefined,undefined>{
+export class AboutPage extends React.Component<undefined,undefined>{
     render(){
         return <div className="jumbotron">
                     <h1>About</h1>
@@ -12,7 +12,7 @@ export class About extends React.Component<undefined,undefined>{
                             <li>TypeScript</li>
                             <li>React Router</li>
                             <li>Webpack</li>
-                            <li>*Bootstrap!</li>
+                            <li>Bootstrap</li>
                         </ul>
                     </p>
                 </div>;
