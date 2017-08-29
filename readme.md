@@ -17,6 +17,7 @@ Scope:
     - conceptually, central client-side database
     - one immutable store (only action trigger changes, reducers update state) => reducer(state,action) returns a new state
     - immutability - to change state, you have to return a new object instead of modifying the object
+    - ```function(params:string){return x;} where x is int -- is the same with -- (params:string):int => {}```
 
 Compiling:
 - run webpack-dev-server --progress on command line
