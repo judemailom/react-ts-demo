@@ -43,7 +43,6 @@ class CoursesPage extends React.Component<any,any>{
 }
 
 function mapStateToProps(state,ownProps){ //adds a prop named courses with the state value
-    debugger;
     return{
         courses: state.courses
     };

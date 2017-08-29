@@ -19,11 +19,23 @@ Scope:
     - child functions - called by render
     - render - usually should call child components
     - redux connect with mapStateToProps, mapDispatchToProps functions
+- Action Creator
+    - events happening in the app
+    - function returning a plain object describing the event
+    - ``` createCourse(course) { return {type: CREATE_COURSE, course: course} }``` params should be serializable
+    - actions are being dispatched and affects data in the store
 - Store
     - conceptually, central client-side database
     - one immutable store (only action trigger changes, reducers update state) => reducer(state,action) returns a new state
     - immutability - to change state, you have to return a new object instead of modifying the object
     - ```function(params:string){return x;} where x is int -- is the same with -- (params:string):int => {}```
+    - one store multiple reducer
+- Reducer
+    - function that handles data changes
+    - takes state and an action and returns a new state
+- React-redux
+    - Provider component ```<Provider store={this.props.store}> <App/> </Provider>``` allows the app to access the store across the application
+    - connect function ```export default connect(mapStateToProps,mapDispatchToProps) (CoursesPage);``` accepts states and actions you want to expose from the store
 
 Compiling:
 - run webpack-dev-server --progress on command line
