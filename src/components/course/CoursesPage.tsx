@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
+//import {bindActionCreators} from 'redux';
 
 
 class CoursesPage extends React.Component<any,any>{
@@ -51,7 +52,8 @@ function mapStateToProps(state,ownProps){ //adds a prop named courses with the s
 function mapDispatchToProps(dispatch){ //adds a prop named createCourse which is technically a function (dispatch) responsible for calling the action
     return{
         createCourse: (course) => dispatch(courseActions.createCourse(course))
-    }
+        //createCourse: bindActionCreators(courseActions.createCourse,dispatch)
+    };
 }
 
 const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProps);
