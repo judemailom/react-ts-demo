@@ -17316,7 +17316,7 @@ var CoursesPage = (function (_super) {
     };
     ;
     CoursesPage.prototype.onClickSave = function () {
-        this.props.dispatch(courseActions.createCourse(this.state.course));
+        this.props.createCourse(this.state.course);
     };
     ;
     CoursesPage.prototype.courseRow = function (course, index) {
@@ -17341,7 +17341,12 @@ function mapStateToProps(state, ownProps) {
         courses: state.courses
     };
 }
-var connectedStateAndProps = react_redux_1.connect(mapStateToProps);
+function mapDispatchToProps(dispatch) {
+    return {
+        createCourse: function (course) { return dispatch(courseActions.createCourse(course)); }
+    };
+}
+var connectedStateAndProps = react_redux_1.connect(mapStateToProps, mapDispatchToProps);
 exports.default = connectedStateAndProps(CoursesPage);
 
 
