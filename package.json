@@ -14,11 +14,13 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.0",
-    "react-router-native": "^4.2.0"
+    "react-router-native": "^4.2.0",
+    "redux-immutable-state-invariant": "^2.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.74",
     "@types/react-hot-loader": "^3.0.4",
+    "@types/react-redux": "^5.0.5",
     "@types/react-router": "^4.0.15",
     "@types/react-router-dom": "^4.0.7",
     "babel-polyfill": "^6.26.0",

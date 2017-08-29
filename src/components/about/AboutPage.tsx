@@ -5,16 +5,14 @@ export class AboutPage extends React.Component<undefined,undefined>{
     render(){
         return <div className="jumbotron">
                     <h1>About</h1>
-                    <p>
-                        This application uses the ff technologies:
-                        <ul>
-                            <li>React</li>
-                            <li>TypeScript</li>
-                            <li>React Router</li>
-                            <li>Webpack</li>
-                            <li>Bootstrap</li>
-                        </ul>
-                    </p>
+                    This application uses the ff technologies:
+                    <ul>
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>React Router</li>
+                        <li>Webpack</li>
+                        <li>Bootstrap</li>
+                    </ul>
                 </div>;
     }
 }
