@@ -6,6 +6,7 @@ import {HomePage} from "./home/Homepage";
 import {AboutPage} from "./about/AboutPage";
 import {AuthorPage} from "./author/AuthorPage";
 import {default as CoursesPage} from "./course/CoursesPage";
+import {default as ManageCoursePage} from "./course/ManageCoursePage";
 import {BrowserRouter, Route} from "react-router-dom";
 
 export class App extends React.Component<any,any>{
@@ -19,6 +20,8 @@ export class App extends React.Component<any,any>{
                         <Route path="/about" component={AboutPage}/>
                         <Route path="/author" component={AuthorPage}/>
                         <Route path="/courses" component={CoursesPage}/>
+                        <Route path="/course" component={ManageCoursePage}/>
+                        <Route path="/course/:id" component={ManageCoursePage}/>
                     </div>
                 </BrowserRouter>
             </div>

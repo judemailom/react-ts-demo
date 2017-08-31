@@ -1,4 +1,4 @@
-import delay from './Delay';
+import {default as delay} from './Delay';
 declare var Promise:any;
 
 // This file mocks a web API by working with the hard-coded data below.
