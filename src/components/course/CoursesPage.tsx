@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
+import {CourseList} from './CourseList';
 //import {bindActionCreators} from 'redux';
 
 
@@ -33,7 +34,7 @@ class CoursesPage extends React.Component<any,any>{
         return(
             <div>
                 <h1>Courses</h1>
-                {this.props.courses.map(this.courseRow)}
+                <CourseList courses={this.props.courses}/>
                 <h2>Add Course</h2>
                 <input type="text" onChange={this.onTitleChange} value={this.state.course.title}/>
                 <input type="submit" value="Save" onClick={this.onClickSave}/>
