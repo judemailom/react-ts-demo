@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const SelectInput = ({name,label,onChange,defaultOption,value,error,options}) => {
+export const SelectInput = ({name,label,onChangeHandler,defaultOption,value,error,options}) => {
     return(
         <div className="form-group">
             <label htmlFor={name}>{label}</label>
@@ -9,7 +9,7 @@ export const SelectInput = ({name,label,onChange,defaultOption,value,error,optio
                     name={name}
                     value={value}
                     className="form-control"
-                    onChange={onChange}>
+                    onChange={onChangeHandler}>
                     <option value="">{defaultOption}</option>
                     {options.map((option) =>{
                         return <option key={option.value} value={option.value}>{option.text}</option>;

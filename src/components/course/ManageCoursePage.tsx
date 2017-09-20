@@ -12,30 +12,28 @@ class ManageCoursePage extends React.Component<any,any>{
             errors: {}
         };
 
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onClickSave = this.onClickSave.bind(this);
+        this.updateCourseState = this.updateCourseState.bind(this);
+        //this.onClickSave = this.onClickSave.bind(this);
     }
 
-    onTitleChange(event){
-        // const course = this.state.course;
-        // course.title = event.target.value;
-        // this.setState({course:course});
-    };
-
-    onClickSave(){
-        //this.props.createCourse(this.state.course);
-    };
+    updateCourseState(event){
+        const field = event.target.value;
+        let course = this.state.course;
+        course[field] = event.target.value;
+        this.setState({course:course});
+    }
 
     render(){
-        return(
+        return(<div>
+            <input type="text" onChange={() => {alert('adsadsa');}} value={this.state.course.title}/>
             <CourseForm 
                 course={this.state.course}
-                errors={this.state.errors}
                 allAuthors={this.props.authors}
                 onSave={[]}
-                onChange={[]}
-                loading = "false"
-            />
+                onChange={this.updateCourseState}
+                loading = {false}
+                errors={this.state.errors}                
+            /></div>
         );
     }
 }

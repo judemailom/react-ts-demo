@@ -10,7 +10,7 @@ export const CourseForm = ({course, allAuthors, onSave, onChange, loading, error
             <TextInput
                 name = "title"
                 label = "Title"
-                onChange = {onChange}
+                onChangeHandler = {onChange}
                 placeHolder = ""
                 value = {course.title}
                 error = {errors.title}/>
@@ -18,7 +18,7 @@ export const CourseForm = ({course, allAuthors, onSave, onChange, loading, error
             <SelectInput
                 name = "authorId"
                 label = "Author"
-                onChange = {onChange}
+                onChangeHandler = {onChange}
                 defaultOption = "Select Author"
                 value = {course.authorId}
                 error = {errors.authorId}
@@ -27,7 +27,7 @@ export const CourseForm = ({course, allAuthors, onSave, onChange, loading, error
             <TextInput
                 name = "category"
                 label = "Category"
-                onChange = {onChange}
+                onChangeHandler = {onChange}
                 placeHolder=""
                 value = {course.category}
                 error = {errors.category}/>
@@ -37,7 +37,7 @@ export const CourseForm = ({course, allAuthors, onSave, onChange, loading, error
                 label = "Length"
                 value = {course.length}
                 placeHolder=""
-                onChange = {onChange}
+                onChangeHandler = {onChange}
                 error = {errors.length}/>
 
             <input

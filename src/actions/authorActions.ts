@@ -11,10 +11,17 @@ export function loadAuthorsSuccess(authors){
 
 export function loadAuthors(){
     return function(dispatch){
-        return AuthorApi.getAllAuthors().then(authors => {
-            dispatch(loadAuthorsSuccess(authors));
+        return AuthorApi.getAuthorsApi()
+        .then(function(data){
+            dispatch(loadAuthorsSuccess(JSON.parse(data)));
+            //console.log("load authors:" + data);
         }).catch(error => {
-            console.log(error);
-        });
+            console.log(error)});
+            
+        //return AuthorApi.getAllAuthors().then(authors => {
+        //    dispatch(loadAuthorsSuccess(authors));
+        //}).catch(error => {
+        //    console.log(error);
+        //});
     }
 }

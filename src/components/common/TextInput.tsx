@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const TextInput = ({name,label,onChange,placeHolder,value,error}) => {
+export const TextInput = ({name,label,onChangeHandler,placeHolder,value,error}) => {
     let wrapperClass = 'form-group';
     if(error && error.length > 0){
         wrapperClass += " " + "has-error";
@@ -16,7 +16,7 @@ export const TextInput = ({name,label,onChange,placeHolder,value,error}) => {
                     className="form-control"
                     placeholder={placeHolder}
                     value={value}
-                    onChange={onChange}/>
+                    onChange={onChangeHandler}/>
                 {error && <div className="alert alert-danger">{error}</div>}
             </div>
         </div>

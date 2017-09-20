@@ -9,7 +9,7 @@ export class MockApi{
         this.authors = 
             [
                 {
-                    id: 'cory-house', 
+                    id: 'cory-houses', 
                     firstName: 'Cory', 
                     lastName: 'House'
                 },	

@@ -57,6 +57,13 @@ const generateId = (course) => {
 };
 
 class CourseApi {
+  static getCoursesApi(){
+    return fetch("http://localhost:63870/api/course",{
+      method: "get"
+    })
+      .then((response) => response.json());
+  }
+
   static getAllCourses() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

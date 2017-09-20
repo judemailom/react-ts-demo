@@ -1,4 +1,6 @@
 import {default as delay} from './Delay';
+import 'whatwg-fetch';
+
 declare var Promise:any;
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
@@ -27,6 +29,14 @@ const generateId = (author) => {
 };
 
 class AuthorApi {
+
+  static getAuthorsApi(){
+    return fetch("http://localhost:63870/api/author",{
+      method: "get"
+    })
+      .then((response) => response.json());
+  }
+
   static getAllAuthors() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

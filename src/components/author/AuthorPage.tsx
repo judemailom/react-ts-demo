@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {AuthorList} from "./AuthorList";
-import {AuthorApi, OAuthor} from "../../api/AuthorApi"
+//import {AuthorApi, OAuthor} from "../../api/AuthorApi"
+import AuthorApi from "../../api/MockAuthorApi"
 
 export class AuthorPage extends React.Component<any,any>{
     constructor(authors: any){
@@ -12,19 +13,14 @@ export class AuthorPage extends React.Component<any,any>{
     }
 
     componentDidMount(){
-        var x:AuthorApi = new AuthorApi();
-        this.setState({authors: x.getAllAuthors()});
+        var thisObj = this;
+        AuthorApi.getAuthorsApi()
+        .then(function(data){
+            thisObj.setState({authors: JSON.parse(data)});
+        });
     }
 
     render(){
-        function createAuthorRow(authors:any){
-            return (
-                <tr key={authors.id}> 
-                    <td><a href="#">{authors.id}</a></td>
-                    <td>{authors.firstName} {authors.lastName}</td>
-                </tr>
-            );
-        }
         return (
             <div>
                 <h1>Authors</h1>

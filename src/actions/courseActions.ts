@@ -11,10 +11,16 @@ export function loadCoursesSuccess(courses){
 
 export function loadCourses(){
     return function(dispatch){
-        return courseApi.getAllCourses().then(courses => {
-            dispatch(loadCoursesSuccess(courses));
+        return courseApi.getCoursesApi()
+        .then(function(data){
+            dispatch(loadCoursesSuccess(JSON.parse(data)));
+            //console.log("load authors:" + data);
         }).catch(error => {
-            console.log(error);
-        });
+            console.log(error)});
+        // return courseApi.getAllCourses().then(courses => {
+        //     dispatch(loadCoursesSuccess(courses));
+        // }).catch(error => {
+        //     console.log(error);
+        // });
     }
 }
