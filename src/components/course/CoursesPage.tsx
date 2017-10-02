@@ -2,8 +2,12 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
 import {CourseList} from './CourseList';
+import { withRouter } from 'react-router-dom'
 //import {bindActionCreators} from 'redux';
 
+const Button = withRouter(({ history }) => (
+    <button className="btn btn-primary" onClick={() => { history.push('/course')}}>Add Course</button>
+))
 
 class CoursesPage extends React.Component<any,any>{
     constructor(props:any,state:any){
@@ -16,11 +20,12 @@ class CoursesPage extends React.Component<any,any>{
     courseRow(course,index){
         return <div key={index}> {course.title} </div>
     }
-    
+
     render() {
         return(
             <div>
                 <h1>Courses</h1>
+                <Button/>
                 <CourseList courses={this.props.courses}/>
             </div>
         );

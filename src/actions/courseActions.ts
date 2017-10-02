@@ -9,6 +9,14 @@ export function loadCoursesSuccess(courses){
     return{type: types.LOAD_COURSE_SUCCESS, courses:courses};
 }
 
+export function updateCourseSuccess(courses){
+    return{type: types.UPDATE_COURSE_SUCCESS, courses:courses};
+}
+
+export function createCourseSuccess(courses){
+    return{type: types.CREATE_COURSE_SUCCESS, courses:courses};
+}
+
 export function loadCourses(){
     return function(dispatch){
         return courseApi.getCoursesApi()
@@ -22,5 +30,16 @@ export function loadCourses(){
         // }).catch(error => {
         //     console.log(error);
         // });
+    }
+}
+
+export function saveCourse(course){
+    return function(dispatch, getState){
+        return courseApi.saveCourse(course).then(savedCourse =>{
+            course.id ? dispatch(updateCourseSuccess(savedCourse)) :
+                dispatch(createCourseSuccess(savedCourse));
+        }).catch(error => {
+            throw(error);
+        });
     }
 }

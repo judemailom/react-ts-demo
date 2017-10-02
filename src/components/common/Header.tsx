@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {Link, NavLink} from "react-router-dom";
+import LoadingDots from "./LoadingDots";
 
 export class Header extends React.Component<undefined,undefined>{
     render(){
@@ -12,6 +13,7 @@ export class Header extends React.Component<undefined,undefined>{
                     <li><NavLink activeClassName="active" to="/about">About</NavLink></li>
                     <li><NavLink activeClassName="active" to="/author">Authors</NavLink></li>
                     <li><NavLink activeClassName="active" to="/courses">Courses</NavLink></li>
+                    <LoadingDots interval={100} dots={20}/>
                 </ul>
             </div>
         </nav>;

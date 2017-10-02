@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
 import {CourseForm} from './CourseForm';
+//import toastr from 'toastr';
 
 class ManageCoursePage extends React.Component<any,any>{
     constructor(props:any,state:any){
@@ -13,7 +14,19 @@ class ManageCoursePage extends React.Component<any,any>{
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
-        //this.onClickSave = this.onClickSave.bind(this);
+        this.saveCourse = this.saveCourse.bind(this);
+    }
+
+    saveCourse(event){
+        event.preventDefault();
+        this.props.saveCourse(this.state.course);
+        // this.setState({saving: true});
+        // this.props.actions.saveCourse(this.state.course)
+        //     .then(() => this.redirect())
+        //     .catch(error => {
+        //         toastr.error(error);
+        //         this.setState({saving: false});
+        //     });
     }
 
     updateCourseState(event){
@@ -28,7 +41,7 @@ class ManageCoursePage extends React.Component<any,any>{
             <CourseForm 
                 course={this.state.course}
                 allAuthors={this.props.authors}
-                onSave={this.updateCourseState}
+                onSave={this.saveCourse}
                 onChange={this.updateCourseState}
                 loading = {false}
                 errors={this.state.errors}                
@@ -55,7 +68,8 @@ function mapStateToProps(state,ownProps){ //adds a prop named courses with the s
 
 function mapDispatchToProps(dispatch){ //adds a prop named createCourse which is technically a function (dispatch) responsible for calling the action
     return{
-        createCourse: (course) => dispatch(courseActions.createCourse(course))
+        createCourse: (course) => dispatch(courseActions.createCourse(course)),
+        saveCourse: (course) => dispatch(courseActions.saveCourse(course))
         //createCourse: bindActionCreators(courseActions.createCourse,dispatch)
     };
 }
