@@ -20,7 +20,7 @@ export class App extends React.Component<any,any>{
                         <Route path="/about" component={AboutPage}/>
                         <Route path="/author" component={AuthorPage}/>
                         <Route path="/courses" component={CoursesPage}/>
-                        <Route path="/course" component={ManageCoursePage}/>
+                        <Route exact path="/course" component={ManageCoursePage}/>
                         <Route path="/course/:id" component={ManageCoursePage}/>
                     </div>
                 </BrowserRouter>

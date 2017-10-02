@@ -14239,7 +14239,7 @@ var App = (function (_super) {
                     React.createElement(react_router_dom_1.Route, { path: "/about", component: AboutPage_1.AboutPage }),
                     React.createElement(react_router_dom_1.Route, { path: "/author", component: AuthorPage_1.AuthorPage }),
                     React.createElement(react_router_dom_1.Route, { path: "/courses", component: CoursesPage_1.default }),
-                    React.createElement(react_router_dom_1.Route, { path: "/course", component: ManageCoursePage_1.default }),
+                    React.createElement(react_router_dom_1.Route, { exact: true, path: "/course", component: ManageCoursePage_1.default }),
                     React.createElement(react_router_dom_1.Route, { path: "/course/:id", component: ManageCoursePage_1.default })))));
     };
     return App;
