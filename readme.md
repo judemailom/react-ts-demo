@@ -54,7 +54,9 @@
 - React Life Cycle exists! could occcur on server/client side(?)
 
 # Glossary
-- Props - immutable arbitrary inputs that each component accepts
+- Props
+    - immutable arbitrary inputs that each component accepts
+    - pure means function/class does not change any param sent to it, react components should be pure wrt props
 - State - mutable inputs that are passed through components
 - Action - type of change that will happen
 - Reducer - pure functions that generates changes by creating modified copies of the state (state + action)

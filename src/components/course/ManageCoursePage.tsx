@@ -17,7 +17,7 @@ class ManageCoursePage extends React.Component<any,any>{
     }
 
     updateCourseState(event){
-        const field = event.target.value;
+        const field = event.target.name;
         let course = this.state.course;
         course[field] = event.target.value;
         this.setState({course:course});
@@ -25,11 +25,10 @@ class ManageCoursePage extends React.Component<any,any>{
 
     render(){
         return(<div>
-            <input type="text" onChange={() => {alert('adsadsa');}} value={this.state.course.title}/>
             <CourseForm 
                 course={this.state.course}
                 allAuthors={this.props.authors}
-                onSave={[]}
+                onSave={this.updateCourseState}
                 onChange={this.updateCourseState}
                 loading = {false}
                 errors={this.state.errors}                

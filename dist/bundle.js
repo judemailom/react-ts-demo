@@ -18136,15 +18136,14 @@ var ManageCoursePage = (function (_super) {
         //this.onClickSave = this.onClickSave.bind(this);
     }
     ManageCoursePage.prototype.updateCourseState = function (event) {
-        var field = event.target.value;
+        var field = event.target.name;
         var course = this.state.course;
         course[field] = event.target.value;
         this.setState({ course: course });
     };
     ManageCoursePage.prototype.render = function () {
         return (React.createElement("div", null,
-            React.createElement("input", { type: "text", onChange: function () { alert('adsadsa'); }, value: this.state.course.title }),
-            React.createElement(CourseForm_1.CourseForm, { course: this.state.course, allAuthors: this.props.authors, onSave: [], onChange: this.updateCourseState, loading: false, errors: this.state.errors })));
+            React.createElement(CourseForm_1.CourseForm, { course: this.state.course, allAuthors: this.props.authors, onSave: this.updateCourseState, onChange: this.updateCourseState, loading: false, errors: this.state.errors })));
     };
     return ManageCoursePage;
 }(React.Component));
