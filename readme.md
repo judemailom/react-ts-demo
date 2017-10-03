@@ -43,18 +43,6 @@
 - run webpack-dev-server --progress on command line
 - open http://localhost:8089
 
-# Questions/Notes
-- state
-- rendering
-- promise (async calls)
-- App.tsx container is master? - QUINO
-- why some components have their own index.ts? - QUINO
-- main.tsx is index - QUINO
-- index.ts purpose? - QUINO
-- what are routes and reducers?
-- react is controller view
-- React Life Cycle exists! could occcur on server/client side(?)
-
 # Glossary
 - Props
     - immutable arbitrary inputs that each component accepts
