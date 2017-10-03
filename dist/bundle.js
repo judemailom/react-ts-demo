@@ -18231,6 +18231,12 @@ var ManageCoursePage = (function (_super) {
         _this.saveCourse = _this.saveCourse.bind(_this);
         return _this;
     }
+    ManageCoursePage.prototype.componentWillReceiveProps = function (nextProps) {
+        debugger;
+        if (this.props.course.id != nextProps.course.id) {
+            this.setState({ course: nextProps.course });
+        }
+    };
     ManageCoursePage.prototype.saveCourse = function (event) {
         event.preventDefault();
         this.props.saveCourse(this.state.course);
@@ -18255,14 +18261,25 @@ var ManageCoursePage = (function (_super) {
     };
     return ManageCoursePage;
 }(React.Component));
+function getCourseById(courses, id) {
+    var course = courses.filter(function (course) { return course.id == id; });
+    if (course)
+        return course[0];
+    return null;
+}
 function mapStateToProps(state, ownProps) {
+    debugger;
+    var courseId = ownProps.match.params.id;
+    var course = { id: "", title: "", watchHref: "", authorId: "", length: "", category: "" };
+    if (courseId && state.courses.length > 0) {
+        course = getCourseById(state.courses, courseId);
+    }
     var authorsFormattedForDD = state.authors.map(function (author) {
         return {
             value: author.id,
             text: author.firstName + ' ' + author.lastName
         };
     });
-    var course = { id: "", title: "", watchHref: "", authorId: "", length: "", category: "" };
     return {
         courses: course,
         authors: authorsFormattedForDD

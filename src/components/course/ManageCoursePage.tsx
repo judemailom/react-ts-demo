@@ -17,6 +17,13 @@ class ManageCoursePage extends React.Component<any,any>{
         this.saveCourse = this.saveCourse.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        debugger;
+        if (this.props.course.id != nextProps.course.id) {
+            this.setState({course: nextProps.course});
+        }
+    }
+
     saveCourse(event){
         event.preventDefault();
         this.props.saveCourse(this.state.course);
@@ -51,7 +58,22 @@ class ManageCoursePage extends React.Component<any,any>{
     }
 }
 
+function getCourseById(courses, id){
+    const course = courses.filter(course => course.id == id);
+    if(course) return course[0];
+    return null;
+}
+
 function mapStateToProps(state,ownProps){ //adds a prop named courses with the state value
+    debugger;
+    
+    const courseId = ownProps.match.params.id;
+
+    let course = {id:"",title:"",watchHref: "",authorId: "",length: "",category: ""}
+
+    if(courseId && state.courses.length > 0){
+        course = getCourseById(state.courses, courseId);
+    }
 
     const authorsFormattedForDD = state.authors.map(author => {
         return {
@@ -60,7 +82,6 @@ function mapStateToProps(state,ownProps){ //adds a prop named courses with the s
            }
     });
 
-    let course = {id:"",title:"",watchHref: "",authorId: "",length: "",category: ""}
     return{
         courses: course,
         authors: authorsFormattedForDD
