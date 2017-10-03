@@ -64,3 +64,4 @@
 - Component - presentation, data-agnostic, usually written as functional state components
 - Container - wraps components, passes data, connect()
 - Store - global state of the app
+- Promise - an object representing the eventual completion or failure of an asynchronous operation.

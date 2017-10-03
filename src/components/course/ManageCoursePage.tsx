@@ -2,12 +2,12 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
 import {CourseForm} from './CourseForm';
-//import toastr from 'toastr';
+import toastr from 'toastr';
+import {withRouter} from 'react-router-dom';
 
 class ManageCoursePage extends React.Component<any,any>{
     constructor(props:any,state:any){
         super(props,state);
-
         this.state = {
             course: this.props.courses,
             errors: {}
@@ -20,6 +20,7 @@ class ManageCoursePage extends React.Component<any,any>{
     saveCourse(event){
         event.preventDefault();
         this.props.saveCourse(this.state.course);
+        this.props.history.push('/courses');
         // this.setState({saving: true});
         // this.props.actions.saveCourse(this.state.course)
         //     .then(() => this.redirect())
@@ -76,3 +77,5 @@ function mapDispatchToProps(dispatch){ //adds a prop named createCourse which is
 
 const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProps);
 export default connectedStateAndProps(ManageCoursePage);
+
+withRouter(ManageCoursePage);
